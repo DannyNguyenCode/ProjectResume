@@ -1,0 +1,12 @@
+.childStyle {
+    align-items: center;
+    /* min-height: 100%; */
+    display:flex;
+    flex-direction:column !important;
+    justify-content: center;
+    overflow-y: auto;
+}
+.parentStyle{
+    display: flex;
+    height: 87%;
+}

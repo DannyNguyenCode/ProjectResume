@@ -1,0 +1,107 @@
+@media only screen and (min-device-width: 480px) 
+                   and (max-device-width: 900px) 
+                   and (orientation: landscape) {
+
+    #footerWrapper{
+        position: static !important;
+    }
+    .parentStyle{
+        height: 80vh;
+    }
+
+}
+#wrapper{
+    height: 100%;
+}
+#contentWrapper{
+    height: 87%;
+    display: flex;
+}
+@media (max-width: 1200px) and (min-width:400px) and (orientation: landscape) 
+{
+    #toolbar{
+        min-height: 50px;
+    }
+
+
+}
+
+#paper{
+    width:60%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+/* phone in portrait view (long vertically) */
+@media (max-width: 450px)
+{
+    #paper{
+        width:100%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        margin-top: auto;
+        margin-bottom: auto;
+        box-shadow: none !important;
+    
+    }
+    #loginWrapper{
+        width: 80%;
+    }
+
+
+}
+/* phone in landscape view (long horizontally) */
+@media (max-height: 450px) and (orientation:landscape)
+{
+    #paper{
+        width:100%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 85%;
+        margin-top: auto;
+        margin-bottom: auto;
+        box-shadow: none !important;
+    
+    }
+    #loginWrapper{
+        width: 50%;
+    }
+}
+/* tablie in portait view */
+@media (max-width: 950px) and (min-width:451px)
+{
+    #paper{
+        width:100%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 85%;
+        margin-top: auto;
+        margin-bottom: auto;
+        box-shadow: none !important;
+    
+    }
+    #loginWrapper{
+        width: 50%;
+    }
+}
+/* tablet in landscape view */
+@media (max-height: 950px) and (min-height:451px) and (orientation:landscape)
+{
+    #paper{
+        width:100%;
+        margin-right: auto;
+        margin-left: auto;
+        height: 85%;
+        margin-top: auto;
+        margin-bottom: auto;
+        box-shadow: none !important;
+    
+    }
+    #loginWrapper{
+        width: 50%;
+    }
+}

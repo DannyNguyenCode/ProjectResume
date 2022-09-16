@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using resumeProject.api.Models;
+using AutoMapper;
+using resumeProject.api.Helpers;
 namespace resumeProject.api
 {
     public class Startup

@@ -8,7 +8,7 @@ import './Login.css'
 import LoadingButton from "../reuseableComponents/LoadingButton";
 import {Box} from "@mui/material";
 import { createTheme } from '@mui/material/styles';
-import { loginUser } from "../../api/APILogin";
+import { getUserInformation, loginUser } from "../../api/APILogin";
 import {useNavigate} from 'react-router-dom';
 interface Props{
   onChangeView?:(view:number)=>void;
@@ -36,7 +36,9 @@ const Login = (props: Props)=>{
     const handleLogin=()=>{
         setLoading(true);
         setOpen(true);
-
+        getUserInformation().then((res:any)=>{
+          console.log(res)
+        });
         loginUser({Email: username, Password:password}).then((res: any)=>{
           setSnackBarMessage('Sending Request and Hashing Password')
           return res;

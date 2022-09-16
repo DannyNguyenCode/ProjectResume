@@ -1,6 +1,6 @@
 # ProjectResume
 
-#### Depedencies
+#### Front End Depedencies
 * React v18.2.0
 * Material UI v5.8.7
 * React-Router v6.3.0
@@ -14,12 +14,8 @@
 * Microsoft SQL Server Management Studio
 
 
-#### Backend
-
-
-
-### Dependency Links
-* BCrypt on server side - https://github.com/BcryptNet/bcrypt.net
-* Axios on client side - https://www.npmjs.com/package/axios
-* Toasty on client side - https://github.com/aleab/toastify
-* SqlClient on server side - https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-6.0
+### Back end Dependencies
+* BCrypt.Net-Next v4.0.3 - https://github.com/BcryptNet/bcrypt.net
+* System.Data.SqlClient v4.8.3 - https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-6.0
+* Microsoft.AspNet.WebApi v5.2.9 - https://docs.microsoft.com/en-us/aspnet/core/web-api/?WT.mc_id=dotnet-35129-website&view=aspnetcore-6.0
+* AutoMapper v11.0.1 - https://automapper.org/

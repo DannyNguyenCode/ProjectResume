@@ -1,5 +1,17 @@
 # ProjectResume
 
+#### Current Task
+* ~Allow user to login~
+* Authenticate user with JWT
+    * Forgot Password front end
+    * Forgot password endpoint that sends email to user with link (link redirects to form to reset password)
+    * update password endpoint (save new password to database)
+* Create front end table for skills
+* Create front end interface to add skills
+* Create backend endpoint to save skills
+* Create database table for skills
+
+
 #### Front End Depedencies
 * React v18.2.0
 * Material UI v5.8.7

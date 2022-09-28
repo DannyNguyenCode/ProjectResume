@@ -1,11 +1,15 @@
 import React from 'react';
-
+import Footer from '../components/Footer';
+import NavigationBar from '../components/NavigationBar';
 
 const Skills =()=>{
     return(
-        <div>
-            Successfully logged in and redirected to Skills page
-        </div>
+        <React.Fragment>     
+        <NavigationBar/>
+            
+        <Footer/> 
+        </React.Fragment>
+  
     )
 }
 

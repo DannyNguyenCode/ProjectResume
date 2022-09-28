@@ -10,12 +10,14 @@ import {Box} from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { getUserInformation, loginUser } from "../../api/APILogin";
 import {useNavigate} from 'react-router-dom';
+import { useAppDispatch } from "../../app/hooks";
+import {setIsAdmin} from '../../app/reduxFeatures/isAdminState';
 interface Props{
   onChangeView?:(view:number)=>void;
 }
 const Login = (props: Props)=>{
     const [open,setOpen]= useState(false);
-    const [username,setUsername]= useState("giabnguyen1@gmail.com");
+    const [username,setUsername]= useState("gbnguyenw@gmail.com");
     const [usernameError,setUsernameError]=useState('');
     const [password,setPassword]=useState('Rushhour2');
     const [passwordError,setPasswordError]=useState('')
@@ -36,9 +38,7 @@ const Login = (props: Props)=>{
     const handleLogin=()=>{
         setLoading(true);
         setOpen(true);
-        getUserInformation().then((res:any)=>{
-          console.log(res)
-        });
+
         loginUser({Email: username, Password:password}).then((res: any)=>{
           setSnackBarMessage('Sending Request and Hashing Password')
           return res;
@@ -46,8 +46,24 @@ const Login = (props: Props)=>{
           setTimeout(()=>{  
             setSnackBarMessage(res.data);
             setLoading(false);
-            navigate("/Dashboard");
-            return res;
+            getUserInformation().then((res:any)=>{
+
+              return res.data.data.find((user:any)=>username.toLowerCase() === user.email.toLowerCase())  
+
+            }).then((res:any)=>{
+              dispatch(setIsAdmin(res.isAdmin))
+           
+            }).then(()=>{
+              navigate("/Dashboard");
+            }).catch((err: any)=>{
+              // network error
+              console.log("network error", err)
+              setSnackBarMessage('Server side error, Error: ' + err.message);
+              setLoading(false);
+              return;
+          
+        })
+         
           },5000)
         })
         .catch((err: any)=>{
@@ -89,6 +105,8 @@ const Login = (props: Props)=>{
           setPassword(input);
           setPasswordError('')
       }
+    
+      const dispatch = useAppDispatch();
     return(
             <Box id="loginWrapper" sx={{ width: '55%' }}>
               <Grid spacing={{xs:4,sm:1, md:3}} container>

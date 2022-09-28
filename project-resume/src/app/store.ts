@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import footerStateReducer from './reduxFeatures/footerState'
+import isAdminStateReducer from './reduxFeatures/isAdminState'
 export const store = configureStore({
     reducer:{
-        footerState: footerStateReducer
+        footerState: footerStateReducer,
+        isAdminState: isAdminStateReducer
     }
 })
 // Infer the `RootState` and `AppDispatch` types from the store itself

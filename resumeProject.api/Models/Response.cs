@@ -11,9 +11,10 @@ namespace resumeProject.api.Models
 {
     public class Response<T> : IResponse<T>
     {
-        public List<T> data { get; set; }
         public int statusCode { get; set; }
         public string message { get; set; }
+        public List<T> data { get; set; }
+
         public int length { get; set; }
 
 

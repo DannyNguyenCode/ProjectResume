@@ -1,10 +1,12 @@
 import React from "react";
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+
 import AddIcCallIcon from '@mui/icons-material/AddIcCall'; 
 import EmailIcon from '@mui/icons-material/Email';
-import FeedbackIcon from '@mui/icons-material/Feedback';
-import { Grid } from "@mui/material";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Grid, Link } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { onClickFooterIcons } from "../../app/reduxFeatures/footerState";
 
@@ -13,13 +15,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 
 const Footer = ()=>{
     const style = {
@@ -35,7 +30,8 @@ const Footer = ()=>{
     };
     const [openEmail, setOpenEmail] = React.useState(false);
     const [openPhone, setOpenPhone] = React.useState(false);
-    const [openFeedback,setOpenFeedback]= React.useState(false);
+    const [openGithub,setOpenGithub]= React.useState(false);
+    const [openLinkedIn,setOpenLinkedIn]= React.useState(false);
     const handleOpenEmail = () => {
         setOpenEmail(true)
     };
@@ -50,28 +46,40 @@ const Footer = ()=>{
         setOpenPhone(false);
         dispatch(onClickFooterIcons(null));
     };
-    const handleCloseFeedback=()=>{
-        setOpenFeedback(false);
+    const handleCloseGithub=()=>{
+        setOpenGithub(false);
         dispatch(onClickFooterIcons(null));
     }
-    const handleOpenFeedback=()=>{
-        setOpenFeedback(true)
+    const handleOpenGithub=()=>{
+        setOpenGithub(true)
     }
+    const handleCloseLinkedIn=()=>{
+      setOpenLinkedIn(false);
+      dispatch(onClickFooterIcons(null));
+  }
+  const handleOpenLinkedIn=()=>{
+      setOpenLinkedIn(true)
+  }
     const footerStateValue = useAppSelector((state)=>state.footerState.value)
     const dispatch = useAppDispatch();
     
     const handleOnClick=(_value:number | any)=>{
         dispatch(onClickFooterIcons(_value))
         if(_value === 0){
-            handleOpenFeedback();
+            handleOpenGithub();
         }else if(_value === 1){
             handleOpenEmail(); 
         }else if(_value === 2){
             handleOpenPhone();
         }
+        else if(_value === 3){
+          handleOpenLinkedIn()
+        }
         else{
             handleClosePhone();
             handleCloseEmail();
+            handleCloseLinkedIn();
+            handleCloseGithub()
         }
      
     }
@@ -89,9 +97,10 @@ const Footer = ()=>{
                 //     height:'7%'
                 // }}
             >
-                <BottomNavigationAction label="Feedback" icon={<FeedbackIcon />} />
+                <BottomNavigationAction label="Github Portfolio" icon={<GitHubIcon />} />
                 <BottomNavigationAction label="Email" icon={<EmailIcon />} />
                 <BottomNavigationAction label="Phone" icon={<AddIcCallIcon />} />
+                <BottomNavigationAction label="LinkedIn" icon={<LinkedInIcon />} />
             </BottomNavigation>
             <Modal
               open={openEmail}
@@ -123,28 +132,27 @@ const Footer = ()=>{
                   </Typography>
                 </Box>
             </Modal>
-            <Dialog open={openFeedback} onClose={handleCloseFeedback}>
-                <DialogTitle>Subscribe</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    To subscribe to this website, please enter your email address here. We
-                    will send updates occasionally.
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    variant="standard"
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleCloseFeedback}>Cancel</Button>
-                  <Button onClick={handleCloseFeedback}>Subscribe</Button>
-                </DialogActions>
-            </Dialog>
+            <Modal open={openGithub} onClose={handleCloseGithub}>
+                <Box sx={style}>
+                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Github Portfolio
+                  </Typography>
+                  <Link href="https://github.com/DannyNguyenCode/ProjectResume" variant="body2" target={'_blank'}>
+                    https://github.com/DannyNguyenCode/ProjectResume
+                  </Link>
+                </Box>
+            </Modal>
+            
+            <Modal open={openLinkedIn} onClose={handleCloseLinkedIn}>
+                <Box sx={style}>
+                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                    LinkedIn
+                  </Typography>
+                  <Link href="https://www.linkedin.com/in/gia-bao-danny-nguyen/" variant="body2" target={'_blank'}>
+                      https://www.linkedin.com/in/gia-bao-danny-nguyen/
+                  </Link>
+                </Box>
+            </Modal>
         </Grid>
     )
 }

@@ -72,7 +72,7 @@ const Home = (props: Props)=>{
     }
     return(
         <React.Fragment>     
-                <NavigationBar/>
+                <NavigationBar isLoggedIn={true}/>
                 {loadingCounter !==1?getLoadingPage():getLoginPage()}  
                 <Footer/>   
         </React.Fragment>     

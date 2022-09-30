@@ -19,6 +19,7 @@
 * Typescript v4.7.4
 * Toastify v9.0.5
 * ReduxJS
+* MUI X Data Grid v5.17.5
 
 
 #### Database
